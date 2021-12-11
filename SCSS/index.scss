@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+// Primary
+$mainBG: hsl(233, 47%, 7%);
+$cardBG: hsl(244, 38%, 16%);
+$accent: hsl(277, 64%, 61%);
+
+// Neutral
+$mainHeadingAndStats: hsl(0, 0%, 100%);
+$mainParagraph: hsla(0, 0%, 100%, 0.75);
+$statHeadings: hsla(0, 0%, 100%, 0.6);
+
+@mixin displayFlex($direction, $just-content, $al-items) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $just-content;
+  align-items: $al-items;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $mainBG;
+  padding: 1.5rem;
+}
+
+.stat-card {
+  @include displayFlex(column, none, center);
+  border-radius: 15px;
+  background: $cardBG;
+
+  .stat-image {
+    border-radius: 15px;
+    width: 100%;
+    position: relative;
+    img {
+      border-radius: 15px 15px 0px 0px;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  .stat-image::before {
+    border-radius: 15px;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: $accent;
+    opacity: 0.5;
+  }
+
+  // STAT DETAILS
+  .stat-details {
+    @include displayFlex(column, none, stretch);
+    gap: 1rem;
+    padding: 2rem;
+
+    .stat-title {
+      @include displayFlex(column, none, none);
+      gap: 1rem;
+
+      h1 {
+        font-family: "Inter", sans-serif;
+        text-align: center;
+        font-size: 1.7rem;
+        color: $mainHeadingAndStats;
+
+        span {
+          color: $accent;
+        }
+      }
+
+      p {
+        font-family: "Inter", sans-serif;
+        text-align: center;
+        color: $mainParagraph;
+      }
+    }
+
+    // STAT DATA
+    .stat-data {
+      @include displayFlex(column, none, center);
+      gap: 2rem;
+      .stat {
+        @include displayFlex(column, center, center);
+      }
+
+      .stat span:nth-child(1) {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: $mainHeadingAndStats;
+      }
+
+      .stat span:nth-child(2) {
+        font-family: "Lexend Deca", sans-serif;
+        color: $statHeadings;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
