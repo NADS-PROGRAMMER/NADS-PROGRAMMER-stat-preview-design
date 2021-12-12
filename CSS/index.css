@@ -8,6 +8,21 @@
 }
 
 body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1rem;
+  min-height: 100vh;
   background: #090b1a;
   padding: 1.5rem;
 }
@@ -20,19 +35,21 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: none;
-      -ms-flex-pack: none;
-          justify-content: none;
+  -webkit-box-pack: stretch;
+      -ms-flex-pack: stretch;
+          justify-content: stretch;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   border-radius: 15px;
   background: #1b1938;
+  max-width: 25em;
+  width: 100%;
 }
 
 .stat-card .stat-image {
-  border-radius: 15px;
   width: 100%;
+  border-radius: 15px 15px 0px 0px;
   position: relative;
 }
 
@@ -50,8 +67,20 @@ body {
   bottom: 0;
   right: 0;
   left: 0;
-  background: #aa5cdb;
+  background: #5b1c82;
   opacity: 0.5;
+}
+
+.stat-card .stat-image::after {
+  border-radius: 15px;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #5b1c82;
+  opacity: 0.29;
 }
 
 .stat-card .stat-details {
@@ -69,7 +98,7 @@ body {
       -ms-flex-align: stretch;
           align-items: stretch;
   gap: 1rem;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .stat-card .stat-details .stat-title {
@@ -104,6 +133,7 @@ body {
   font-family: "Inter", sans-serif;
   text-align: center;
   color: rgba(255, 255, 255, 0.75);
+  line-height: 150%;
 }
 
 .stat-card .stat-details .stat-data {
@@ -150,4 +180,89 @@ body {
   font-family: "Lexend Deca", sans-serif;
   color: rgba(255, 255, 255, 0.6);
   font-size: 0.8rem;
+}
+
+.attribution {
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 0.8rem;
+  color: #aa5cdb;
+}
+
+.attribution a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 538px) {
+  .stat-card {
+    max-width: 25em;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .stat-card {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1.2fr 1fr;
+        grid-template-columns: 1.2fr 1fr;
+    border-radius: 5px;
+    max-width: 55em;
+    padding-left: 0.5rem;
+  }
+  .stat-card .stat-image {
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/image-header-desktop.jpg");
+    background-size: cover;
+    background-position: center center center center;
+    background-repeat: no-repeat;
+    border-radius: 0px 5px 5px 0px;
+  }
+  .stat-card .stat-image img {
+    display: none;
+  }
+  .stat-card .stat-image::before {
+    border-radius: 0px 5px 5px 0px;
+  }
+  .stat-card .stat-details {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 3rem;
+    gap: 4rem;
+  }
+  .stat-card .stat-details .stat-title h1 {
+    font-size: 1.9rem;
+  }
+  .stat-card .stat-details .stat-title h1,
+  .stat-card .stat-details .stat-title p {
+    text-align: left;
+  }
+  .stat-card .stat-details .stat-title p {
+    font-size: 0.9rem;
+    max-width: 40ch;
+    line-height: 180%;
+  }
+  .stat-card .stat-details .stat-data {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    gap: 3rem;
+  }
+  .stat-card .stat-details .stat-data .stat {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    gap: 0.6rem;
+  }
+  .stat-card .stat-details .stat-data .stat span:nth-child(1) {
+    font-size: 1.1rem;
+  }
+  .stat-card .stat-details .stat-data .stat span:nth-child(2) {
+    font-size: 0.65rem;
+  }
 }

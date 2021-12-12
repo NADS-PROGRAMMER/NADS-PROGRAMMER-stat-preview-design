@@ -25,18 +25,24 @@ $statHeadings: hsla(0, 0%, 100%, 0.6);
 }
 
 body {
+  @include displayFlex(column, center, center);
+  gap: 1rem;
+  min-height: 100vh;
   background: $mainBG;
   padding: 1.5rem;
 }
 
 .stat-card {
-  @include displayFlex(column, none, center);
+  @include displayFlex(column, stretch, center);
   border-radius: 15px;
   background: $cardBG;
+  max-width: 25em;
+  width: 100%;
 
   .stat-image {
-    border-radius: 15px;
     width: 100%;
+    border-radius: 15px 15px 0px 0px;
+
     position: relative;
     img {
       border-radius: 15px 15px 0px 0px;
@@ -53,15 +59,27 @@ body {
     bottom: 0;
     right: 0;
     left: 0;
-    background: $accent;
+    background: hsl(277, 64%, 31%);
     opacity: 0.5;
   }
 
+  .stat-image::after {
+    // hsl(277, 64%, 31%)
+    border-radius: 15px;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: hsl(277, 64%, 31%);
+    opacity: 0.29;
+  }
   // STAT DETAILS
   .stat-details {
     @include displayFlex(column, none, stretch);
     gap: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
 
     .stat-title {
       @include displayFlex(column, none, none);
@@ -82,6 +100,7 @@ body {
         font-family: "Inter", sans-serif;
         text-align: center;
         color: $mainParagraph;
+        line-height: 150%;
       }
     }
 
@@ -104,6 +123,89 @@ body {
         font-family: "Lexend Deca", sans-serif;
         color: $statHeadings;
         font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+.attribution {
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 0.8rem;
+  color: $accent;
+
+  a {
+    color: $mainParagraph;
+    text-decoration: none;
+  }
+}
+@media only screen and (min-width: 538px) {
+  .stat-card {
+    max-width: 25em;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .stat-card {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    border-radius: 5px;
+    max-width: 55em;
+    padding-left: 0.5rem;
+
+    .stat-image {
+      order: 2;
+      width: 100%;
+      height: 100%;
+      background-image: url("../images/image-header-desktop.jpg");
+      background-size: cover;
+      background-position: center center center center;
+      background-repeat: no-repeat;
+      border-radius: 0px 5px 5px 0px;
+
+      img {
+        display: none;
+      }
+    }
+
+    .stat-image::before {
+      border-radius: 0px 5px 5px 0px;
+    }
+
+    .stat-details {
+      justify-content: space-between;
+      padding: 3rem;
+      gap: 4rem;
+      .stat-title {
+        h1 {
+          font-size: 1.9rem;
+        }
+        h1,
+        p {
+          text-align: left;
+        }
+        p {
+          font-size: 0.9rem;
+          max-width: 40ch;
+          line-height: 180%;
+        }
+      }
+
+      // STAT DATA
+      .stat-data {
+        flex-direction: row;
+        gap: 3rem;
+
+        .stat {
+          align-items: flex-start;
+          gap: 0.6rem;
+        }
+        .stat span:nth-child(1) {
+          font-size: 1.1rem;
+        }
+
+        .stat span:nth-child(2) {
+          font-size: 0.65rem;
+        }
       }
     }
   }
