@@ -52,7 +52,7 @@ body {
   }
 
   .stat-image::before {
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px;
     content: "";
     position: absolute;
     top: 0;
@@ -65,7 +65,7 @@ body {
 
   .stat-image::after {
     // hsl(277, 64%, 31%)
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px;
     content: "";
     position: absolute;
     top: 0;
@@ -167,7 +167,8 @@ body {
       }
     }
 
-    .stat-image::before {
+    .stat-image::before,
+    .stat-image::after {
       border-radius: 0px 5px 5px 0px;
     }
 

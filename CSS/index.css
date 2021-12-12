@@ -60,7 +60,7 @@ body {
 }
 
 .stat-card .stat-image::before {
-  border-radius: 15px;
+  border-radius: 15px 15px 0px 0px;
   content: "";
   position: absolute;
   top: 0;
@@ -72,7 +72,7 @@ body {
 }
 
 .stat-card .stat-image::after {
-  border-radius: 15px;
+  border-radius: 15px 15px 0px 0px;
   content: "";
   position: absolute;
   top: 0;
@@ -224,7 +224,8 @@ body {
   .stat-card .stat-image img {
     display: none;
   }
-  .stat-card .stat-image::before {
+  .stat-card .stat-image::before,
+  .stat-card .stat-image::after {
     border-radius: 0px 5px 5px 0px;
   }
   .stat-card .stat-details {
